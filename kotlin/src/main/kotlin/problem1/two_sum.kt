@@ -3,7 +3,7 @@ package problem1
 import java.lang.IllegalArgumentException
 
 
-internal class Solution {
+class Solution {
 
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val h = hashMapOf<Int, Int>()

@@ -4,7 +4,7 @@ fun main() {
     println(Solution().lengthOfLongestSubstring("abcabcbb"))
 }
 
-internal class Solution {
+class Solution {
     fun lengthOfLongestSubstring(s: String): Int {
         val l = mutableSetOf<Char>()
         var start = 0

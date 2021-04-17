@@ -4,7 +4,7 @@ fun main() {
     println(Solution().reverse(123))
 }
 
-internal class Solution {
+class Solution {
     fun reverse(x: Int): Int {
         var tmp: Long = x.toLong()
         var res = 0L

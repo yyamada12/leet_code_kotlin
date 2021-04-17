@@ -4,7 +4,7 @@ class ListNode(var `val`: Int) {
     var next: ListNode? = null
 }
 
-internal class Solution {
+class Solution {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
         var carry = 0
         val ans = ListNode(0)
