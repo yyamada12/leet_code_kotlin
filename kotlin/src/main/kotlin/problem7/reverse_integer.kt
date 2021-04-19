@@ -8,7 +8,7 @@ class Solution {
     fun reverse(x: Int): Int {
         var tmp: Long = x.toLong()
         var res = 0L
-        while(tmp != 0L) {
+        while (tmp != 0L) {
             res = res * 10 + tmp % 10
             tmp /= 10
         }

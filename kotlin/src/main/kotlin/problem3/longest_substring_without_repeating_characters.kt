@@ -10,7 +10,7 @@ class Solution {
         var start = 0
         var end = 0
         var res = 0
-        while(end < s.length) {
+        while (end < s.length) {
             val c = s[end]
             if (l.contains(c)) {
                 res = max(res, end - start)
