@@ -1,41 +1,39 @@
 package explore.may2021.day1
 
 fun main() {
-    println(WordFilter(arrayOf("apple")).f("a", "e"))
+    val obj = WordFilter(
+        arrayOf(
+            "cabaabaaaa",
+            "ccbcababac",
+            "bacaabccba",
+            "bcbbcbacaa",
+            "abcaccbcaa",
+            "accabaccaa",
+            "cabcbbbcca",
+            "ababccabcb",
+            "caccbbcbab",
+            "bccbacbcba"
+        )
+    )
+    println(obj.f("bccbacbcba", "a"))
 }
 
 class WordFilter(words: Array<String>) {
-    private val trie = TrieNode()
+    private val m: MutableMap<String, Int> = mutableMapOf()
 
     init {
-        for (i in words.indices) {
-            val word = words[i] + "{"
-            for (start in word.indices) {
-                var cur = trie
-                cur.index = i
-                for (j in start until 2 * word.length - 1) {
-                    val k = word[j % word.length] - 'a'
-                    if (cur.children[k] == null) {
-                        cur.children[k] = TrieNode()
-                    }
-                    cur = cur.children[k]!!
-                    cur.index = i
+        for ((i, w) in words.withIndex()) {
+            for (start in w.indices) {
+                val suf = w.substring(start)
+                for (end in w.indices) {
+                    val pre = w.substring(0, end + 1)
+                    m["$suf#$pre"] = i
                 }
             }
         }
     }
 
     fun f(prefix: String, suffix: String): Int {
-        println(trie)
-        var cur = trie
-        for (c in "$suffix{$prefix") {
-            cur = cur.children[c - 'a'] ?: return -1
-        }
-        return cur.index
+        return m["$suffix#$prefix"] ?: -1
     }
-}
-
-class TrieNode {
-    val children: Array<TrieNode?> = arrayOfNulls(27)
-    var index = -1
 }
