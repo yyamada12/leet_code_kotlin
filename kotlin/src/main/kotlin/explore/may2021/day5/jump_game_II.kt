@@ -3,19 +3,20 @@ package explore.may2021.day5
 class Solution {
     fun jump(nums: IntArray): Int {
         val l = nums.size
-        val dp = IntArray(l)
-        dp[l - 1] = 0
+        nums[l - 1] = 0
+        var crt: Int
         for (i in l - 2 downTo 0) {
-            dp[i] = 1000
-            for (j in 1..nums[i]) {
+            crt = nums[i]
+            nums[i] = 1000
+            for (j in 1..crt) {
                 val dst = i + j
                 if (dst >= l) {
                     break
                 }
-                dp[i] = min(dp[i], dp[dst] + 1)
+                nums[i] = min(nums[i], nums[dst] + 1)
             }
         }
-        return dp[0]
+        return nums[0]
     }
 }
 
