@@ -1,4 +1,4 @@
-package explore.august2021.day22
+package explore.august2021.day21
 
 fun main() {
     println('1' - '0')
